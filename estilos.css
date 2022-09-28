@@ -1,0 +1,15 @@
+.contenedor{
+    background-color: bisque;
+    margin: 1px;
+}
+
+.logo{
+    background-color: aliceblue;
+    height: 80px;
+    width: 140px;
+}
+
+#log{
+    color: black;
+    width: 40px;
+}
