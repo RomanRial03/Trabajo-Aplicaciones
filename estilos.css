@@ -1,0 +1,21 @@
+.contenedor{
+    background-color: bisque;
+    margin: 1px;
+}
+
+.logo{
+    background-color: aliceblue;
+    height: 80px;
+    width: 140px;
+    border-radius: 10px;
+}
+
+#log{
+    color: black;
+    text-align: center;
+}
+
+.reservar{
+    border-bottom: 10px;
+    background-color: aqua;
+}
