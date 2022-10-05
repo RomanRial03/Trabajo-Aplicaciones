@@ -10,9 +10,9 @@
 </head>
 <body>
     <div class="topnav">
-        <a class="active" href="#home">Home</a>
+        <a class="active" href="#home">Inicio</a>
         <a href="#news">News</a>
-        <a href="#contact">Contact</a>
+        <a href="#contact">Contacto</a>
         <a href="#about">About</a>
       </div>
 
@@ -27,7 +27,7 @@
         <section class="reservar">
             <article id="link">
 
-         <a href="reservas.html">Reservar Turno Ahora</a>
+         <a href="reservas.php">Reservar Turno Ahora</a>
 
         </article>
          
