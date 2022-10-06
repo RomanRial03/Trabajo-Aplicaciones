@@ -9,54 +9,85 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-    <div class="topnav">
+<div class="topnav">
         <a class="active" href="#home">Inicio</a>
         <a href="#news">News</a>
         <a href="#contact">Contacto</a>
         <a href="#about">About</a>
-      </div>
+    </div>
 
- <div class="contenedor">
-    <header>
-        <div class="logo">
-         <h1 id="log">Barber's Razor</h1>
-        </div> <br> <br> <br>
-    </header>
-
-    <nav>
-        <section class="reservar">
-            <article id="link">
-
-         <a href="reservas.php">Reservar Turno Ahora</a>
-
-        </article>
-         
-        </section>
-
-        <div class="disponibilidad">
-            <section>
-                <article class="horarios">
-                    <h1>HORARIOS</h1>
-                </article>
-            <div class="dias">
-                <p>Lunes</p>
-                <p>Martes</p>
-                <p>Miercoles</p>
-                <p>Jueves</p>
-                <p>Viernes</p>
-                <p>Sabado</p>
-                <p>Domingo</p><br>
-            </section>
-            
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+            </div>
+            <div class="col-md-2">
+                <header>
+                    <div class="logo">
+                        <h1 id="log">Barber's Razor</h1>
+                    </div> <br> <br> <br>
+                </header>
+            </div>
         </div>
-            <div class="ubicacion">
-            <h2>Barrio la Florida Calle: Grinspan 169</h2>
+        <div class="row">
+            <div class="col-md-5">
             </div>
-            <div id="mapa">
-            <h1>mapa</h1>
+            <div class="col-md-5">
+                <a href="reservas.php">
+                    <button>reservar</button>
+                </a>
             </div>
+        </div>
+         
+            
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-4">
+                <h1>HORAS</h1>
+            </div>
+            <div class="col-md-5">
+                <h1>UBICACION</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-5">
+                <div class="col-md-3">
+                    <p>Lunes</p>
+                    <p>Martes</p>
+                    <p>Miercoles</p>
+                    <p>Jueves</p>
+                    <p>Viernes</p>
+                    <p>Sabado</p>
+                    <p>Domingo</p><br>
+                </div>
+                <div class="col-md-4">
+                    <p>15:00 - 21:00HS</p>
+                    <p>19:00 - 21:00HS</p>
+                    <p>19:00 - 21:00HS</p>
+                    <p>19:00 - 21:00HS</p>
+                    <p>17:00 - 21:00HS</p>
+                    <p>CERRADO</p>
+                    <p>CERRADO</p>
+                </div>
+            </div>
+        <div>
+            <div class="col-md-3">  
+                <div class="col-md-9">
+                    <h4>Barrio la Florida 
+                        Calle: Grinspan 169</h4>
+                        <a href="https://www.google.com.ar/maps/place/Dr.+Grispan+169,+San+Nicol%C3%A1s+de+Los+Arroyos,+Provincia+de+Buenos+Aires/@-33.3603953,-60.2556279,17z/data=!3m1!4b1!4m5!3m4!1s0x95b76701656d8efb:0x1a5ab900fc52d797!8m2!3d-33.3603998!4d-60.2534392">
+                            <button>Mapa</button>
+                        </a>
+                        <a href="tel:+5493364290390">
+                            <button>(336) 429-0390</button>
+                        </a>
+                </div> 
+            </div>
+        </div>
         
-
+    </div>
         <section class="redes">
             <article>
             <p>whatsapp</p>

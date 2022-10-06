@@ -38,7 +38,7 @@
             <div class="col-md-1">
                 <button name="button">18:00 a 18:45hs</button>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-1 ocupado">
                 <button name="button">18:45 a 19:30hs</button>
             </div>
             <div class="col-md-1">
