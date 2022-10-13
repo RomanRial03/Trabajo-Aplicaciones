@@ -1,7 +1,4 @@
-.contenedor{
-  background-color: rgb(0, 0, 0);
-}
-
+/* pagina principal */
 .logo{
   background-color: aliceblue;
   height: 80px;
@@ -30,34 +27,9 @@
 a:hover .reservar {
   color: chartreuse;
 }
-.topnav {
-  background-color: #333;
-  overflow: hidden;
-}
 
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-/* From uiverse.io by boton */
-button {
+/* Boton azul en pagina principal */
+.btn-color-azul{
   border: none;
   color: #fff;
   background-image: linear-gradient(30deg, #0400ff, #4ce3f7);
@@ -68,7 +40,7 @@ button {
   padding: 0.6em 1.5em;
  }
  
- button:hover {
+ .btn-color-azul:hover {
   background-position: right center;
   background-size: 200% auto;
   -webkit-animation: pulse 2s infinite;
@@ -87,8 +59,12 @@ button {
   100% {
    box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
   }
+
+  /* RESERVAS */
  }
 .ocupado{
+  color: red;
+  border-color: red;
   background-color: red;
-
 }
+/* TURNOS OCUPADOS */
