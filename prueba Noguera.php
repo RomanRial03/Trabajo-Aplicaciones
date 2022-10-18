@@ -1,3 +1,21 @@
+<?php
+    conexionphp();
+    function conexionphp(){
+        $server=  "localhost";
+        $user="root";
+        $pass="";
+        $db="barberia";
+        $port="3306"
+        $con = new mysqli($server, $user, $pass, $db, $port);
+        if ($con){
+            echo "exitosamente";
+        }else{
+            echo "error";
+        }
+        
+    }
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
