@@ -1,19 +1,22 @@
 <?php
-    conexionphp();
-    function conexionphp(){
-        $server=  "localhost";
-        $user="root";
-        $pass="";
-        $db="barberia";
-        $port="3306"
-        $con = new mysqli($server, $user, $pass, $db, $port);
-        if ($con){
-            echo "exitosamente";
-        }else{
-            echo "error";
-        }
-        
-    }
+   include("conexion.php");
+   $con= conectar();
+   echo "exitosamente";
+  
+   
+   $sql = "SELECT * FROM disponibilidad";
+   $result = $con->query($sql);
+   
+   if ($result->num_rows > 0) {
+     // output data of each row
+     while($row = $result->fetch_assoc()) {
+       echo "id: " . $row["dia"]. " - Name: " . $row["hora_real"] . "<br>";
+     }
+   } else {
+     echo "0 results";
+   }
+   $con->close();
+
 ?> 
 
 <!DOCTYPE html>
