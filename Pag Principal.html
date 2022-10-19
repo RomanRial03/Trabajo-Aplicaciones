@@ -1,21 +1,3 @@
-?php
-    conexionphp();
-    function conexionphp(){
-        $server=  "localhost";
-        $user="root";
-        $pass="";
-        $db="barberia";
-        $port="3306"
-        $con = new mysqli($server, $user, $pass, $db, $port);
-        if ($con){
-            echo "exitosamente";
-        }else{
-            echo "error";
-        }
-        
-    }
-?> 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barbers Razor</title>
+
     <!-- estilos css -->
 
     <link rel="stylesheet" href="estilos.css">
