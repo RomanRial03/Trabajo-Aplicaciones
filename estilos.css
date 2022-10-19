@@ -1,5 +1,38 @@
 /* pagina principal */
 .logo{
+ /* HEAD */
+    background-color: aliceblue;
+    height: 40px;
+    width: 140px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.btn btn-primary{
+  width: fit-content;
+    margin: 0 auto;
+}
+
+/* .reservar{
+    width: fit-content;
+    margin: 0 auto;
+    border-bottom: 10px;
+    border-radius: 8px;
+    background-color: aqua;
+} */
+
+/* #link{
+    text-decoration: none;
+    font-size: 20px;
+} */
+
+/* a:hover .reservar {
+    color: chartreuse;
+  } */
+.topnav {
+    background-color: #333;
+    overflow: hidden;
   background-color: aliceblue;
   height: 80px;
   width: 140px;
@@ -54,6 +87,7 @@ a:hover .reservar {
  
   70% {
    box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+ /* a01721cd6cd6095d948a17260b8f65eabff1e6dc */
   }
  
   100% {
