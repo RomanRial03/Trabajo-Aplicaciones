@@ -1,9 +1,6 @@
-.contenedor{
-    background-color: bisque;
-    margin: 1px;
-}
-
+/* pagina principal */
 .logo{
+ /* HEAD */
     background-color: aliceblue;
     height: 40px;
     width: 140px;
@@ -36,27 +33,72 @@
 .topnav {
     background-color: #333;
     overflow: hidden;
+  background-color: aliceblue;
+  height: 80px;
+  width: 140px;
+  border-radius: 10px;
+}
+
+#log{
+  color: black;
+  text-align: center;
+}
+
+.reservar{
+  width: fit-content;
+  margin: 0 auto;
+  border-bottom: 10px;
+  border-radius: 8px;
+  background-color: aqua;
+}
+
+#link{
+  text-decoration: none;
+  font-size: 20px;
+}
+
+a:hover .reservar {
+  color: chartreuse;
+}
+
+/* Boton azul en pagina principal */
+.btn-color-azul{
+  border: none;
+  color: #fff;
+  background-image: linear-gradient(30deg, #0400ff, #4ce3f7);
+  border-radius: 20px;
+  background-size: 100% auto;
+  font-family: inherit;
+  font-size: 17px;
+  padding: 0.6em 1.5em;
+ }
+ 
+ .btn-color-azul:hover {
+  background-position: right center;
+  background-size: 200% auto;
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse512 1.5s infinite;
+ }
+ 
+ @keyframes pulse512 {
+  0% {
+   box-shadow: 0 0 0 0 #05bada66;
   }
-  
-  /* Style the links inside the navigation bar */
-  .topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+ 
+  70% {
+   box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+ /* a01721cd6cd6095d948a17260b8f65eabff1e6dc */
   }
-  
-  /* Change the color of links on hover */
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  /* Add a color to the active/current link */
-  .topnav a.active {
-    background-color: #04AA6D;
-    color: white;
+ 
+  100% {
+   box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
   }
 
+  /* RESERVAS */
+ }
+.ocupado{
+  color: red;
+  border-color: red;
+  background-color: red;
+}
+/* TURNOS OCUPADOS */
