@@ -9,7 +9,6 @@ class usuario{
     public string $password;
     public datetime $fecha_de_nacimiento;   
 }
-
 function ConsultarUsuarioXId($id_usuario){
     //$u = new usuario();
 
@@ -29,7 +28,6 @@ function ConsultarUsuarioXMail($correo){
     
     return json_encode($row);
 }
-
 function ExisteMail($correo){
     //$u = new usuario();
 
@@ -58,8 +56,6 @@ function ExisteUsuario($id){
         return false;
     }    
 }
-
-
 function AgregarUsuario($nombre, $apellido, $genero, $correo_electronico, $password){
     if ( ExisteMail($correo_electronico)){
         return "Error, mail existente";
@@ -76,9 +72,7 @@ function AgregarUsuario($nombre, $apellido, $genero, $correo_electronico, $passw
         return "Error, no se pudo agregar el usuario";
     }    
 }
-
 function EliminarUsuario($id){
-    //$u = new usuario();
 
     $con= conectar();
     if (!ExisteUsuario($id)){
@@ -95,8 +89,25 @@ function EliminarUsuario($id){
         return "Error, no se pudo eliminar el usuario";
     }  
 }
-
-
+function ModificarUsuario($id){
+    $con= conectar();
+    $nombre= $_POST["nombre"];
+    $apellido=$_POST["apellido"];
+    $genero=$_POST["genero"];
+    $correo_electronico= $_POST["correo_electronico"];   
+    $id= $_POST["id"];
+    if (!ExisteUsuario($id)){
+        echo "Error, no existe el usuario";
+    }
+    $sql = "UPDATE usuarios SET nombre= $nombre, apellido='$apellido', genero='$genero', correo_electronico='$correo_electronico' WHERE id_usuario='$id'";
+    $result = $con->query($sql);    
+    if ($con->query($sql) === TRUE) {
+        echo "OK";      
+       }else {
+        echo "ERROR";
+       }
+    mysqli_close($con);
+}
 $accion = $_POST["accion"];
 switch($accion){
     case "agregar":
@@ -126,7 +137,14 @@ switch($accion){
         $correo= $_POST["correo_electronico"];
         print(ConsultarUsuarioXMail($correo)); 
         break;
-
+    case "modificar";
+        $nombre= $_POST["nombre"];
+        $apellido=$_POST["apellido"];
+        $genero=$_POST["genero"];
+        $correo_electronico= $_POST["correo_electronico"];     
+        $id= $_POST["id"];
+        print(ModificarUsuario($id));
+        break;
 }
 
 
