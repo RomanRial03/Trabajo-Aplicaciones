@@ -1,7 +1,18 @@
-/* pagina principal */
+.contenedor{
+  position: relative;
+  padding: 10px;
+  background: #000000;
+background: -webkit-linear-gradient(to right, #434343, #000000);
+background: linear-gradient(to right, #434343, #000000);
+  color: white;
+  font-family: sans-serif;
+}
+
+
 .logo{
- /* HEAD */
-    background-color: aliceblue;
+ background: #2980b9;
+ background: -webkit-linear-gradient(to right, #2c3e50, #2980b9);
+ background: linear-gradient(to right, #2c3e50, #2980b9);
     height: 40px;
     width: 140px;
     border-radius: 10px;
@@ -9,27 +20,11 @@
     margin: 0 auto;
 }
 
-.btn btn-primary{
-  width: fit-content;
-    margin: 0 auto;
+#mapa{
+  font-size: 24px;
 }
 
-/* .reservar{
-    width: fit-content;
-    margin: 0 auto;
-    border-bottom: 10px;
-    border-radius: 8px;
-    background-color: aqua;
-} */
 
-/* #link{
-    text-decoration: none;
-    font-size: 20px;
-} */
-
-/* a:hover .reservar {
-    color: chartreuse;
-  } */
 .topnav {
     background-color: #333;
     overflow: hidden;
@@ -39,27 +34,29 @@
   border-radius: 10px;
 }
 
-#log{
+.logo{
   color: black;
   text-align: center;
 }
 
-.reservar{
-  width: fit-content;
-  margin: 0 auto;
-  border-bottom: 10px;
-  border-radius: 8px;
-  background-color: aqua;
+#logo{
+  float: right;
+  margin-right: 460px;
+  width: 120px;
+  height: 90px;
 }
+
+.container{
+  font-size: 17px;
+  font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 
 #link{
   text-decoration: none;
   font-size: 20px;
 }
 
-a:hover .reservar {
-  color: chartreuse;
-}
 
 /* Boton azul en pagina principal */
 .btn-color-azul{
@@ -87,7 +84,6 @@ a:hover .reservar {
  
   70% {
    box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
- /* a01721cd6cd6095d948a17260b8f65eabff1e6dc */
   }
  
   100% {
@@ -102,3 +98,37 @@ a:hover .reservar {
   background-color: red;
 }
 /* TURNOS OCUPADOS */
+
+/* IMAGEN DE INSTAGRAM */
+
+#ig{
+  width: 60px;
+  margin: 10px;
+}
+
+.ig{
+  margin: 10px;
+  text-align: center;
+}
+
+.sobre{
+  text-align: center;
+}
+
+#letras{
+  font-size: 15px;
+}
+
+.mediana{
+  width: 350px;
+  height: 350px;
+}
+
+.chica{
+  width: 280px;
+  height: 280px;
+}
+
+.trabajos{
+  text-align: center;
+}
