@@ -37,14 +37,18 @@ background: linear-gradient(to right, #434343, #000000);
 .logo{
   color: black;
   text-align: center;
+  margin-top: 35px;
 }
 
 #logo{
-  float: right;
-  margin-right: 460px;
-  width: 120px;
+  float: left;
+  margin-left: 500px;
+  width: 100px;
   height: 90px;
+  border-radius: 100px;
+  margin-top: 5px;
 }
+
 
 .container{
   font-size: 17px;
@@ -109,6 +113,11 @@ background: linear-gradient(to right, #434343, #000000);
 .ig{
   margin: 10px;
   text-align: center;
+}
+
+#instagram{
+  font-size: 20px;
+  text-decoration: none;
 }
 
 .sobre{
