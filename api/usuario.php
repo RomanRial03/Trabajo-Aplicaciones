@@ -8,6 +8,20 @@ class usuario{
     public string $correo_electronico;
     public string $password;  
 }
+
+function ConsultarUsuarios(){
+    //$u = new usuario();
+
+    $con= conectar();
+    $sql = "SELECT * FROM usuarios "; 
+    $result = $con->query($sql);
+    $resultado = [];
+
+    while ($row = $result->fetch_assoc()) { 
+        array_push($resultado, $row); 
+    } 
+    return json_encode($resultado);
+}
 function ConsultarUsuarioXId($id_usuario){
     //$u = new usuario();
 
@@ -130,6 +144,9 @@ switch($accion){
         $correo= $_POST["correo_electronico"];
         print(ConsultarUsuarioXMail($correo)); 
         break;
+    case "consultar";        
+        print(ConsultarUsuarios()); 
+        break;        
     case "modificar";
         $nombre= $_POST["nombre"];
         $apellido=$_POST["apellido"];
