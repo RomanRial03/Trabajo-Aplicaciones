@@ -1,3 +1,16 @@
+<?php
+    include("api/conexion.php");
+    if(!empty($_POST["email"]) && !empty($_POST["password"])){
+        $a=$con->ConsultarUsuarioXMail($correo);
+        $a->bindParam('email', $_POST['email']);
+        $a->execute();
+
+        
+    } 
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +30,7 @@
     }
 
     .bg{
-        background-image: url(logo.jpg);
+        background-image: url(imagenes/logo.jpg);
         background-position: center center;
     }
 
@@ -56,7 +69,7 @@
                 </div>
 
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                    <button type="submit" class="btn btn-primary" value="send">Iniciar Sesión</button>
                 </div>
 
                 <div class="my-3">

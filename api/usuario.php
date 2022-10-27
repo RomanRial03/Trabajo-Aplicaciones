@@ -6,8 +6,7 @@ class usuario{
     public string $nombre;
     public string $apellido;
     public string $correo_electronico;
-    public string $password;
-    public datetime $fecha_de_nacimiento;   
+    public string $password;  
 }
 function ConsultarUsuarioXId($id_usuario){
     //$u = new usuario();
@@ -56,13 +55,13 @@ function ExisteUsuario($id){
         return false;
     }    
 }
-function AgregarUsuario($nombre, $apellido, $genero, $correo_electronico, $password){
+function AgregarUsuario($nombre, $apellido, $correo_electronico, $password){
     if ( ExisteMail($correo_electronico)){
         return "Error, mail existente";
     }
     $con= conectar();
     $correo_electronico = strtolower($correo_electronico);
-    $sql = "INSERT INTO usuarios (nombre, apellido, genero, correo_electronico, password) VALUES ('$nombre', '$apellido', '$genero','$correo_electronico','$password')";
+    $sql = "INSERT INTO usuarios (nombre, apellido, correo_electronico, password) VALUES ('$nombre', '$apellido','$correo_electronico','$password')";
     
     //ejecutar para insertar
     $result = $con->query($sql);    
@@ -89,23 +88,18 @@ function EliminarUsuario($id){
         return "Error, no se pudo eliminar el usuario";
     }  
 }
-function ModificarUsuario($id){
+function ModificarUsuario($id,$nombre,$apellido,$correo_electronico,$password){
     $con= conectar();
-    $nombre= $_POST["nombre"];
-    $apellido=$_POST["apellido"];
-    $genero=$_POST["genero"];
-    $correo_electronico= $_POST["correo_electronico"];   
-    $id= $_POST["id"];
     if (!ExisteUsuario($id)){
         echo "Error, no existe el usuario";
     }
-    $sql = "UPDATE usuarios SET nombre= $nombre, apellido='$apellido', genero='$genero', correo_electronico='$correo_electronico' WHERE id_usuario='$id'";
+    $sql = "UPDATE usuarios SET nombre= '$nombre', apellido='$apellido', correo_electronico='$correo_electronico', password= '$password' WHERE id_usuario='$id'";
     $result = $con->query($sql);    
-    if ($con->query($sql) === TRUE) {
-        echo "OK";      
-       }else {
-        echo "ERROR";
-       }
+    if ($result == 1){
+        return "ok";
+    }else{
+        return "Error, no se pudo editar el usuario";
+    }  
     mysqli_close($con);
 }
 $accion = $_POST["accion"];
@@ -113,10 +107,9 @@ switch($accion){
     case "agregar":
         $nombre= $_POST["nombre"];
         $apellido=$_POST["apellido"];
-        $genero=$_POST["genero"];
         $correo_electronico= $_POST["correo_electronico"];     
         $password=$_POST["password"];  
-        print(AgregarUsuario($nombre, $apellido, $genero, $correo_electronico, $password));
+        print(AgregarUsuario($nombre, $apellido, $correo_electronico, $password));
         break;
     case "validar_mail":
         $correo_electronico= $_POST["correo_electronico"];     
@@ -140,10 +133,10 @@ switch($accion){
     case "modificar";
         $nombre= $_POST["nombre"];
         $apellido=$_POST["apellido"];
-        $genero=$_POST["genero"];
-        $correo_electronico= $_POST["correo_electronico"];     
+        $correo_electronico= $_POST["correo_electronico"];
+        $password= $_POST["password"];     
         $id= $_POST["id"];
-        print(ModificarUsuario($id));
+        print(ModificarUsuario($id,$nombre,$apellido,$correo_electronico,$password));
         break;
 }
 
