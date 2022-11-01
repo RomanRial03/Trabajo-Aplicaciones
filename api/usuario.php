@@ -70,8 +70,8 @@ function ExisteUsuario($id){
     }    
 }
 function AgregarUsuario($nombre, $apellido, $correo_electronico, $password){
-    if ( ExisteMail($correo_electronico)){
-        return "Error, mail existente";
+    if ( ExisteMail($correo_electronico)) {
+        return "{'error': 'si', 'descripcion': 'mail existente'}";
     }
     $con= conectar();
     $correo_electronico = strtolower($correo_electronico);
@@ -80,9 +80,9 @@ function AgregarUsuario($nombre, $apellido, $correo_electronico, $password){
     //ejecutar para insertar
     $result = $con->query($sql);    
     if ($result == 1){
-        return "ok";
+        return "{'error': 'no', 'descripcion': 'usuario agregado correctamente'}";
     }else{
-        return "Error, no se pudo agregar el usuario";
+        return "{'error': 'si', 'descripcion': 'no se pudo agregar el usuario'}";
     }    
 }
 function EliminarUsuario($id){
@@ -116,14 +116,15 @@ function ModificarUsuario($id,$nombre,$apellido,$correo_electronico,$password){
     }  
     mysqli_close($con);
 }
-$accion = $_POST["accion"];
-switch($accion){
+$data = json_decode( file_get_contents('php://input'));
+switch($data->accion){
     case "agregar":
-        $nombre= $_POST["nombre"];
-        $apellido=$_POST["apellido"];
-        $correo_electronico= $_POST["correo_electronico"];     
-        $password=$_POST["password"];  
-        print(AgregarUsuario($nombre, $apellido, $correo_electronico, $password));
+        $nombre= $data->nombre;
+        $apellido=$data->apellido;
+        $correo_electronico= $data->correo_electronico;
+        $password= $data->password;     
+        $respuesta = AgregarUsuario($nombre, $apellido, $correo_electronico, $password);        
+        echo $respuesta;        
         break;
     case "validar_mail":
         $correo_electronico= $_POST["correo_electronico"];     
@@ -148,11 +149,13 @@ switch($accion){
         print(ConsultarUsuarios()); 
         break;        
     case "modificar";
-        $nombre= $_POST["nombre"];
-        $apellido=$_POST["apellido"];
-        $correo_electronico= $_POST["correo_electronico"];
-        $password= $_POST["password"];     
-        $id= $_POST["id"];
+        $data = json_decode($_POST["data"]);
+        
+        $nombre= $data["nombre"];
+        $apellido=$data["apellido"];
+        $correo_electronico= $data["correo_electronico"];
+        $password= $data["password"];     
+        $id= $data["id"];
         print(ModificarUsuario($id,$nombre,$apellido,$correo_electronico,$password));
         break;
 }
