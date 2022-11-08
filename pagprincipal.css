@@ -14,14 +14,30 @@ background: linear-gradient(to right, #434343, #000000);
  background: -webkit-linear-gradient(to right, #2c3e50, #2980b9);
  background: linear-gradient(to right, #2c3e50, #2980b9);
     height: 40px;
-    width: 140px;
+    width: 160px;
     border-radius: 10px;
     width: fit-content;
     margin: 0 auto;
+    text-align: center;
+    align-items: center;
 }
 
+#logo{
+  float: inline-start;
+  width: fit-content;
+  width: 8%;
+  height: 90%;
+  border-radius: 100px;
+  margin-top: 10px;
+}
+
+
 #mapa{
-  font-size: 24px;
+  font-size: 20px;
+}
+
+#wsp{
+  font-size: 25px;
 }
 
 
@@ -34,20 +50,6 @@ background: linear-gradient(to right, #434343, #000000);
   border-radius: 10px;
 }
 
-.logo{
-  color: black;
-  text-align: center;
-  margin-top: 35px;
-}
-
-#logo{
-  float: left;
-  margin-left: 500px;
-  width: 100px;
-  height: 90px;
-  border-radius: 100px;
-  margin-top: 5px;
-}
 
 
 .container{
@@ -72,6 +74,7 @@ background: linear-gradient(to right, #434343, #000000);
   font-family: inherit;
   font-size: 17px;
   padding: 0.6em 1.5em;
+  width: 190px;
  }
  
  .btn-color-azul:hover {
@@ -117,6 +120,10 @@ background: linear-gradient(to right, #434343, #000000);
 
 #instagram{
   font-size: 20px;
+  text-decoration: none;
+}
+
+#boton{
   text-decoration: none;
 }
 
