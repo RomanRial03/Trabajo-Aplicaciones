@@ -5,8 +5,8 @@ class usuario{
     public int $id_usuario;
     public string $nombre;
     public string $apellido;
-    public string $correo_electronico;
-    public string $password;  
+    public string $email;
+    public string $clave;  
 }
 
 function ConsultarUsuarios(){
@@ -35,7 +35,7 @@ function ConsultarUsuarioXMail($correo){
     //$u = new usuario();
 
     $con= conectar();
-    $sql = "SELECT * FROM usuarios where correo_electronico = '" . strtolower( $correo ) . "' "; 
+    $sql = "SELECT * FROM usuarios where email = '" . strtolower( $correo ) . "' "; 
     $result = $con->query($sql);
     $row = $result->fetch_assoc();    
     
@@ -45,7 +45,7 @@ function ExisteMail($correo){
     //$u = new usuario();
 
     $con= conectar();
-    $sql = "SELECT count(correo_electronico) as existe FROM usuarios where correo_electronico = '" . strtolower($correo) . "'"; 
+    $sql = "SELECT count(email) as existe FROM usuarios where email = '" . strtolower($correo) . "'"; 
     $result = $con->query($sql);
     $row = $result->fetch_assoc();    
     if ( $row["existe"] > 0){
@@ -69,13 +69,13 @@ function ExisteUsuario($id){
         return false;
     }    
 }
-function AgregarUsuario($nombre, $apellido, $correo_electronico, $password){
-    if ( ExisteMail($correo_electronico)) {
+function AgregarUsuario($nombre, $apellido, $email, $clave){
+    if ( ExisteMail($email)) {
         return "{'error': 'si', 'descripcion': 'mail existente'}";
     }
     $con= conectar();
-    $correo_electronico = strtolower($correo_electronico);
-    $sql = "INSERT INTO usuarios (nombre, apellido, correo_electronico, password) VALUES ('$nombre', '$apellido','$correo_electronico','$password')";
+    $email = strtolower($email);
+    $sql = "INSERT INTO usuarios (nombre, apellido, email, clave) VALUES ('$nombre', '$apellido','$email','$clave')";
     
     //ejecutar para insertar
     $result = $con->query($sql);    
@@ -102,12 +102,12 @@ function EliminarUsuario($id){
         return "Error, no se pudo eliminar el usuario";
     }  
 }
-function ModificarUsuario($id,$nombre,$apellido,$correo_electronico,$password){
+function ModificarUsuario($id,$nombre,$apellido,$email,$clave){
     $con= conectar();
     if (!ExisteUsuario($id)){
         echo "Error, no existe el usuario";
     }
-    $sql = "UPDATE usuarios SET nombre= '$nombre', apellido='$apellido', correo_electronico='$correo_electronico', password= '$password' WHERE id_usuario='$id'";
+    $sql = "UPDATE usuarios SET nombre= '$nombre', apellido='$apellido', email='$email', clave= '$clave' WHERE id_usuario='$id'";
     $result = $con->query($sql);    
     if ($result == 1){
         return "ok";
@@ -121,14 +121,14 @@ switch($data->accion){
     case "agregar":
         $nombre= $data->nombre;
         $apellido=$data->apellido;
-        $correo_electronico= $data->correo_electronico;
-        $password= $data->password;     
-        $respuesta = AgregarUsuario($nombre, $apellido, $correo_electronico, $password);        
+        $email= $data->email;
+        $clave= $data->clave;     
+        $respuesta = AgregarUsuario($nombre, $apellido, $email, $clave);        
         echo $respuesta;        
         break;
     case "validar_mail":
-        $correo_electronico= $_POST["correo_electronico"];     
-        if(ExisteMail($correo_electronico))
+        $email= $_POST["email"];     
+        if(ExisteMail($email))
             print("si");
         else      
             print("no");
@@ -142,7 +142,7 @@ switch($data->accion){
         print(ConsultarUsuarioXId($id)); 
         break;
     case "consultarXmail";
-        $correo= $_POST["correo_electronico"];
+        $correo= $_POST["email"];
         print(ConsultarUsuarioXMail($correo)); 
         break;
     case "consultar";        
@@ -153,10 +153,10 @@ switch($data->accion){
         
         $nombre= $data["nombre"];
         $apellido=$data["apellido"];
-        $correo_electronico= $data["correo_electronico"];
-        $password= $data["password"];     
+        $email= $data["email"];
+        $clave= $data["clave"];     
         $id= $data["id"];
-        print(ModificarUsuario($id,$nombre,$apellido,$correo_electronico,$password));
+        print(ModificarUsuario($id,$nombre,$apellido,$email,$clave));
         break;
 }
 

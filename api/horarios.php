@@ -2,119 +2,137 @@
 include("conexion.php");
 function ConsultarHorariosDisponibles($dias){
     $con= conectar();
-    $sql = "SELECT * FROM disponibilidad WHERE dia= ".$dias; 
+    $hoy= new DateTime();
+    $hoy= new DateTime($hoy->format("Y-m-d"));     
+        
+    $hasta = new DateTime($hoy->format("Y-m-d"));
+    date_add($hasta, date_interval_create_from_date_string("$dias days"));
+    
+    $sDesde = $hoy->format("Y-m-d");
+    $sHasta = $hasta->format("Y-m-d");
+
+    $sql = "SELECT * FROM reservas WHERE fecha >= '$sDesde' and fecha <= '$sHasta' order by fecha ; ";
+
     $result = $con->query($sql);
     $resultado = [];
-
     while ($row = $result->fetch_assoc()) { 
         array_push($resultado, $row); 
     } 
     return json_encode($resultado);
 
 }
-function ExisteDisponibilidad($dias,$hora_real){
-    $con= conectar();
-    $fecha =  '2000-01-05 ' . $hora_real;
-    $sql = "SELECT COUNT(dia) existe from disponibilidad where dia = '$dias' and hora_real =  '$fecha'";     
+function ExisteReserva($dias){
+    $con= conectar();    
+    $sql = "SELECT count(ocupado) existe from reservas where fecha = '$dias' and ocupado";     
     $result = $con->query($sql);       
     $row = $result->fetch_assoc();    
     if ( $row["existe"] > 0){
-        return true;
+        return "si";
     }else
     {
-        return false;
+        return "no";
     }  
 }
-function ExisteDia($dias){
-    $con= conectar();
-    $sql = "SELECT COUNT(dia) existe from disponibilidad where dia = '$dias'";     
-    $result = $con->query($sql);       
-    $row = $result->fetch_assoc();    
-    if ( $row["existe"] > 0){
-        return true;
-    }else
-    {
-        return false;
-    }  
+
+function AgregarHorario($inicial, $minutos, $ultimo){
+    $respuesta = [];
+    
+    $con= conectar();    
+    $sql = "delete from reservas where fecha >= '$inicial' and fecha <= '$ultimo';";     
+    $result = $con->query($sql);           
+    $fecha = new DateTime($inicial);
+    $hasta = new DateTime($ultimo);
+    $cont = 0;
+    while (True){        
+        // ínsertar fecha
+        $cont ++;
+        $aux = $fecha->format("Y-m-d H:i");        
+        $sql = "INSERT INTO reservas (fecha, ocupado, id_usuario) VALUES ('$aux', 0, null)";    
+        $result = $con->query($sql);    
+        
+        if ($result != 1){        
+            $respuesta["resultado"] = "error";            
+            $respuesta["descripcion"] = "No se pudo agregar horario";        
+            return json_encode($respuesta);        
+        }
+        
+        // incrementamos fechas
+        date_add($fecha, date_interval_create_from_date_string("$minutos minutes"));
+        
+        if ($fecha >= $hasta){     
+            break;
+        }
+        if ($cont >= 1500){
+            break;   
+        }
+    }
+    $respuesta["resultado"] = "ok";            
+    $respuesta["descripcion"] = "Horario agregado con éxito";
+
+    return json_encode($respuesta);
 
 }
-function AgregarHorario($dias,$hora_real){
-    $con= conectar();
-    $fecha =  '2000-01-03 ' . $hora_real;
-    if(!ExisteDisponibilidad($dias,$hora_real)){
-        $sql = "INSERT INTO disponibilidad (dia, hora_real) VALUES ('$dias', '$fecha')";        
-        $result = $con->query($sql);    
-        if ($result == 1){
-            return "ok";
-        }else{
-            return "Error, no se pudo agregar el horario";
-        };
-    }else{
-        return "Disponibilidad ya guardada";
-    }     
-}
-function EliminarHorario($dias, $hora_real){
-    $con= conectar();
-    $fecha =  '2000-01-05 ' . $hora_real;
-    if (!ExisteDisponibilidad($dias,$hora_real)){
-        return "Error, no existe el horario";
-    }
-    $sql = "DELETE FROM disponibilidad WHERE dia = '$dias' and hora_real = '$fecha'";
+
+function AgregarReserva($fechahora, $id_usuario){
+    $con= conectar();  
+    $respuesta = [];  
+    $sql = "update reservas set ocupado = 1, id_usuario = $id_usuario WHERE fecha = '$fechahora'";
     $result = $con->query($sql);    
     if ($result == 1){
-        return "ok";
+        $respuesta["resultado"] = "ok";            
+        $respuesta["descripcion"] = "Reserva agregada con éxito";
     }else{
-        return "Error, no se pudo eliminar el horario";
+        $respuesta["resultado"] = "ok";            
+        $respuesta["descripcion"] = "No se pudo agregar la reserva";
     } 
+    return json_encode($respuesta);
 }
-function EliminarDia($dias){
-    $con= conectar();
-    if (!ExisteDia($dias)){
-        return "Error, no existe el horario";
-    }
-    $sql = "DELETE FROM disponibilidad WHERE dia = '$dias'";
+
+function EliminarReserva($fechahora){
+    $con= conectar();  
+    $respuesta = [];  
+    $sql = "update reservas set ocupado = 0, id_usuario = null WHERE fecha = '$fechahora'";
     $result = $con->query($sql);    
     if ($result == 1){
-        return "ok";
+        $respuesta["resultado"] = "ok";            
+        $respuesta["descripcion"] = "Reserva quitada con éxito";
     }else{
-        return "Error, no se pudo eliminar el horario";
+        $respuesta["resultado"] = "ok";            
+        $respuesta["descripcion"] = "No se pudo quitar la reserva";
     } 
+    return json_encode($respuesta);
 }
+
 
 
 
 $accion = $_POST["accion"];
 switch($accion){
-    case "consultarHorarios":
+    case "ConsultarHorariosDisponibles":
         $dias= $_POST["dias"];
         print(ConsultarHorariosDisponibles($dias));
         break;
     case "AgregarHorario":
-        $dias= $_POST["dias"];
-        $hora_real= $_POST["hora_real"];
-        print(AgregarHorario($dias,$hora_real));
+        $inicial= date_create("2022-11-08 08:00");
+        $final= date_create("2022-11-08 18:00");
+        
+        print(AgregarHorario("2022-11-08 08:00", 45 , "2022-11-08 19:30"));
         break;
-    case "existe";
-        $dias= $_POST["dias"];
-        $hora_real= $_POST["hora_real"];
-        print(ExisteDisponibilidad($dias,$hora_real));
+    case "ExisteReserva";
+        //$dias= $_POST["dias"];
+        //$hora_real= $_POST["hora_real"];
+        $r = ExisteReserva("2022-11-08 11:00:00");
+        print($r);        
         break;
-    case "ExisteDia":
-        $dias=$_POST["dias"];
-        print(ExisteDia($dias));
+    case "AgregarReserva":
+        #$dias=$_POST["dias"];
+        print(AgregarReserva("2022-11-08 11:00:00", 1));
         break;
-    case "eliminarHorario";
-        $dias= $_POST["dias"];
-        $hora_real= $_POST["hora_real"];
-        print(EliminarHorario($dias, $hora_real));
+    case "EliminarReserva";
+        //$dias= $_POST["dias"];
+        //$hora_real= $_POST["hora_real"];
+        print(EliminarReserva("2022-11-08 11:00:00"));
         break;
-    case "EliminarDia";
-        $dias= $_POST["dias"];
-        print(EliminarDia($dias));
-        break;
-    
-    
-
 
 
 }

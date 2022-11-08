@@ -105,14 +105,41 @@
         "accion": "agregar",
         "nombre": nombre.value,
         "apellido": apellido.value,
-        "mail": email.value,
-        "clave": password.value
+        "correo_electronico": email.value,
+        "password": password.value
       };
-      Api_Usuario( datos);
+      llamdaApi("/clase/Trabajo-Aplicaciones/api/usuario.php", datos, deregreso);
+
+      function deregreso() {
+        if (this.readyState === 4) {
+          if (this.status == 200) {
+            let php2 = this.responseText.replaceAll("'", '"');
+            let json = JSON.parse(php2);
+            if (json["error"] == "no") {
+              //alert("redirigiendo a reservas.php");   
+              window.location.href = "/clase/Trabajo-Aplicaciones/reservas.html";
+
+            } else {
+              document.getElementById("lbError").innerText = json["descripcion"];
+            }
+          }
+        }
+      }
     }
 
 
+    function llamdaApi(url, datos, funcion_regreso) {
+      let xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = funcion_regreso;
+      xhr.open("POST", url)
+      xhr.setRequestHeader("Accept", "application/json");
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+      xhr.send(JSON.stringify(datos));
+      
 
+    }
+    
     function Api_Usuario(datos){
       const request = new XMLHttpRequest();
       request.open('POST', 'api/usuarios.php', false);  // `false` makes the request synchronous

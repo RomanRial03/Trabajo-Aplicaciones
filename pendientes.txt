@@ -1,0 +1,20 @@
+[x] definir modelo de datos ( una tabla o dos )
+    [x] cambiar el modelo
+
+[x] Mover al raiz los fuentes
+
+[ ] corregir las apis con los nuevos campos y nuevas tablas
+    [x] horarios
+    [x] usuarios
+[ ] funcion de agregar horarios que pueda poner un desde y un cantidad de dias para insertar en reservas todos los días disponibles
+
+
+[ ] mover al server para hacer pruebas
+    [ ] copiar la base en el server
+    [ ] usuario para fTP
+
+[ ] Probar la nueva funcion js de request (sincrona)
+[ ] retocar todos los endpoint para que trabaje con json (devuelva)
+
+[ ] maquetado (hacer la grilla de los horarios disponibles y ocupados)
+    [ ] reemplazar lo necesario desde php
