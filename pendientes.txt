@@ -6,7 +6,8 @@
 [ ] corregir las apis con los nuevos campos y nuevas tablas
     [x] horarios
     [x] usuarios
-[ ] funcion de agregar horarios que pueda poner un desde y un cantidad de dias para insertar en reservas todos los días disponibles
+[ ] funcion de agregar horarios que pueda poner un desde y un cantidad de dias para insertar en reservas 
+    todos los días disponibles
 
 
 [ ] mover al server para hacer pruebas

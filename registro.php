@@ -105,7 +105,7 @@
         "accion": "agregar",
         "nombre": nombre.value,
         "apellido": apellido.value,
-        "mail": email.value,
+        "email": email.value,
         "clave": password.value
       };
       Api_Usuario( datos);
@@ -115,10 +115,15 @@
 
     function Api_Usuario(datos){
       const request = new XMLHttpRequest();
-      request.open('POST', 'api/usuarios.php', false);  // `false` makes the request synchronous
-      request.send(data);  
-      if (request.status === 200) {
-        console.log(request.responseText);
+      request.open('POST', 'api/usuario.php', false);  // `false` makes the request synchronous
+      request.send(JSON.stringify(datos));  
+      if (request.status === 200) {        
+        let respuesta = JSON.parse(request.responseText);
+        if (respuesta["resultado"] == "ok"){
+          alert("Se ingreso correctamente el usuario");
+        }else{
+          alert(respuesta["descripcion"])
+        }
       }
     }
 

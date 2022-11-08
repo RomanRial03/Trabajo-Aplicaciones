@@ -48,6 +48,7 @@ function ExisteMail($correo){
     $sql = "SELECT count(email) as existe FROM usuarios where email = '" . strtolower($correo) . "'"; 
     $result = $con->query($sql);
     $row = $result->fetch_assoc();    
+    mysqli_close($con);
     if ( $row["existe"] > 0){
         return true;
     }else
@@ -71,19 +72,27 @@ function ExisteUsuario($id){
 }
 function AgregarUsuario($nombre, $apellido, $email, $clave){
     if ( ExisteMail($email)) {
-        return "{'error': 'si', 'descripcion': 'mail existente'}";
-    }
+        $respuesta["resultado"] = "error";            
+        $respuesta["descripcion"] = "Error, el E-Mail ya existe" ;
+        return json_encode($respuesta);    
+    }    
+
     $con= conectar();
     $email = strtolower($email);
     $sql = "INSERT INTO usuarios (nombre, apellido, email, clave) VALUES ('$nombre', '$apellido','$email','$clave')";
-    
+    $respuesta = [];
+
     //ejecutar para insertar
-    $result = $con->query($sql);    
+    $result = $con->query($sql);  
+    mysqli_close($con);  
     if ($result == 1){
-        return "{'error': 'no', 'descripcion': 'usuario agregado correctamente'}";
+        $respuesta["resultado"] = "ok";            
+        $respuesta["descripcion"] = "Usuario agregado con éxito";            
     }else{
-        return "{'error': 'si', 'descripcion': 'no se pudo agregar el usuario'}";
+        $respuesta["resultado"] = "error";            
+        $respuesta["descripcion"] = "El Usuario no se pudo agregar";                    
     }    
+    return json_encode($respuesta);
 }
 function EliminarUsuario($id){
 
@@ -104,17 +113,23 @@ function EliminarUsuario($id){
 }
 function ModificarUsuario($id,$nombre,$apellido,$email,$clave){
     $con= conectar();
-    if (!ExisteUsuario($id)){
-        echo "Error, no existe el usuario";
+    if (!ExisteUsuario($id)){        
+        $respuesta["resultado"] = "error";            
+        $respuesta["descripcion"] = "Error, no existe el usuario" ;
+        return json_encode($respuesta);
     }
     $sql = "UPDATE usuarios SET nombre= '$nombre', apellido='$apellido', email='$email', clave= '$clave' WHERE id_usuario='$id'";
-    $result = $con->query($sql);    
-    if ($result == 1){
-        return "ok";
-    }else{
-        return "Error, no se pudo editar el usuario";
-    }  
+    $result = $con->query($sql);        
     mysqli_close($con);
+    if ($result == 1){
+        $respuesta["resultado"] = "ok";            
+        $respuesta["descripcion"] = "Usuario agregado con éxito";            
+    }else{
+        $respuesta["resultado"] = "error";            
+        $respuesta["descripcion"] = "El Usuario no se pudo agregar, " .  $con->error;                    
+    }    
+    return json_encode($respuesta);
+    
 }
 $data = json_decode( file_get_contents('php://input'));
 switch($data->accion){
