@@ -1,0 +1,150 @@
+.contenedor{
+  position: relative;
+  padding: 10px;
+  background: #000000;
+background: -webkit-linear-gradient(to right, #434343, #000000);
+background: linear-gradient(to right, #434343, #000000);
+  color: white;
+  font-family: sans-serif;
+}
+
+
+.logo{
+ background: #2980b9;
+ background: -webkit-linear-gradient(to right, #2c3e50, #2980b9);
+ background: linear-gradient(to right, #2c3e50, #2980b9);
+    height: 40px;
+    width: 160px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+}
+
+#logo{
+  float: inline-start;
+  width: fit-content;
+  width: 8%;
+  height: 90%;
+  border-radius: 100px;
+  margin-top: 10px;
+}
+
+
+#mapa{
+  font-size: 20px;
+}
+
+#wsp{
+  font-size: 25px;
+}
+
+
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+  background-color: aliceblue;
+  height: 80px;
+  width: 140px;
+  border-radius: 10px;
+}
+
+
+
+.container{
+  font-size: 17px;
+  font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+#link{
+  text-decoration: none;
+  font-size: 20px;
+}
+
+
+/* Boton azul en pagina principal */
+.btn-color-azul{
+  border: none;
+  color: #fff;
+  background-image: linear-gradient(30deg, #0400ff, #4ce3f7);
+  border-radius: 20px;
+  background-size: 100% auto;
+  font-family: inherit;
+  font-size: 17px;
+  padding: 0.6em 1.5em;
+  width: 190px;
+ }
+ 
+ .btn-color-azul:hover {
+  background-position: right center;
+  background-size: 200% auto;
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse512 1.5s infinite;
+ }
+ 
+ @keyframes pulse512 {
+  0% {
+   box-shadow: 0 0 0 0 #05bada66;
+  }
+ 
+  70% {
+   box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+  }
+ 
+  100% {
+   box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+  }
+
+  /* RESERVAS */
+ }
+.ocupado{
+  color: red;
+  border-color: red;
+  background-color: red;
+}
+/* TURNOS OCUPADOS */
+
+/* IMAGEN DE INSTAGRAM */
+
+#ig{
+  width: 60px;
+  margin: 10px;
+}
+
+.ig{
+  margin: 10px;
+  text-align: center;
+}
+
+#instagram{
+  font-size: 20px;
+  text-decoration: none;
+}
+
+#boton{
+  text-decoration: none;
+}
+
+.sobre{
+  text-align: center;
+}
+
+#letras{
+  font-size: 15px;
+}
+
+.mediana{
+  width: 350px;
+  height: 350px;
+}
+
+.chica{
+  width: 280px;
+  height: 280px;
+}
+
+.trabajos{
+  text-align: center;
+}

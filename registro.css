@@ -1,0 +1,25 @@
+body{
+    background: #000000;
+background: -webkit-linear-gradient(to right, #434343, #000000);
+background: linear-gradient(to right, #434343, #000000);
+}
+
+.container{
+    color: white;
+}
+
+
+#registro{
+ background: #2980b9;
+ background: -webkit-linear-gradient(to right, #2c3e50, #2980b9);
+ background: linear-gradient(to right, #2c3e50, #2980b9);
+    height: 40px;
+    width: 140px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 20px auto;
+}
+
+.casilla{
+    margin-left: 15px;
+}
