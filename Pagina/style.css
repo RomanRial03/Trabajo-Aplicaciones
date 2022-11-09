@@ -55,7 +55,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh;
+    height: 100%;
     background: url(imagenes/barber.jpg) no-repeat center;
     background-size: cover;
 }
@@ -68,18 +68,17 @@ body {
     color: #fff;
 }
 
-#tiempo{
+#title{
     margin-bottom: 40px;
-    color: #fff;
-    font-size: 300%;
+    font-size: 60px;
     text-transform: uppercase;
+    color: #171717;
+    background-color: antiquewhite;
+    border-radius: 30px;
+    width: 40%;
+    text-shadow: 8px 5px 5px rgba(139, 111, 111, 0.7);
 }
 
-.horarios{
-    color: #fff;
-    text-align: left;
-    font-size: 110%;
-}
 
 p {
     margin-bottom: 40px;
@@ -103,7 +102,7 @@ p {
 }
 
 .content {
-    height: 50vh;
+    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -113,6 +112,20 @@ p {
 .sau {
     padding: 50px 0;
     background: #303030;
+}
+
+#tiempo{
+    margin-bottom: 10px;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 300%;
+    text-transform: uppercase;
+}
+
+.horarios{
+    color: #fff;
+    text-align: left;
+    font-size: 100%;
 }
 
 .box-container {
@@ -155,14 +168,14 @@ p {
 }
 
 .price {
-    background: url(imagenes/barbershop.jpg) no-repeat center;
+    background: url(imagenes/barbershop2.jpg) no-repeat center;
     background-size: cover;
     background-attachment: fixed;
     text-align: center;
 }
 
 .about {
-    background: #303030;
+    background: #000000;
     padding: 50px 0;
 }
 
@@ -177,8 +190,8 @@ p {
     width: 250px;
     padding-bottom: 20px;
     text-align: center;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
-    background: #171717;
+    box-shadow: 0 5px 5px rgba(253, 251, 251, 0.7);
+    background: #353434;
     margin: 20px 20px;
 }
 
@@ -210,8 +223,8 @@ p {
 }
 
 .contact {
-    padding: 50px 0;
-    background: #171717;
+    padding: 250px 0;
+    background: #303030;
 }
 
 
@@ -263,14 +276,35 @@ p {
 
 .como-llegar{
     color: white;
+    font-size: 25px;
+    text-shadow: 0 5px 5px rgba(21, 20, 20, 0.7);
 }
+
+
 #ubi{
     color: black;
     font-size: 40px;
+    margin:10px;
+    background-color: blanchedalmond;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
 }
 
 .trabajos{
-    width: 520px;
-    height: 450px;
-    float: left;
+    margin: 10px;
+}
+
+.ts{
+    width: 320px;
+    height: 300px;
+    display: inline-block;
+}
+
+.titulo2{
+    color: #fff;
+    font-size: 60px;
+    font-family: sans-serif;
+    margin-bottom: 80px;
+    margin-top: 10px;
 }
