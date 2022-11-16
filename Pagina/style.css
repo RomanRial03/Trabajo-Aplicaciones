@@ -184,7 +184,10 @@ header {
 
 /* COMENTARIOS */
 
+/* FONDO */
+
 .about {
+    height: 100%;
     background: #303030;
     padding: 50px 0;
 }
@@ -196,6 +199,7 @@ header {
     flex-wrap: wrap;
 }
 
+/* CAJAS DE COMENTARIOS */
 .box-container2 .box {
     width: 250px;
     padding-bottom: 20px;
@@ -235,7 +239,8 @@ header {
 /* TEXTO DE COMENTARIOS */
 
 p {
-    margin-bottom: 40px;
+    height: 100%;
+    margin-top: 0px;
     font-size: 18px;
     color: #fff;
     padding: 0 150px;
@@ -316,15 +321,8 @@ p {
 /* IMAGENES */
 
 .trabajos{
-    display: inline-flex;
-    justify-content: center;
-    width: 420px;
-    height: 330px;
-    margin: 5px;
-}
-
-.mediana{
-    height: 290px;
-    width: 400px;
-    margin: 5px;
+    display: inline-block;
+    width: 40%;
+    height: 50%;
+    margin: 16px;
 }
