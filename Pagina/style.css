@@ -3,7 +3,6 @@
     padding: 0;
     border: 0;
     font-size: 100%;
-    vertical-align: baseline;
 }
 body {
     text-align: center;
@@ -11,34 +10,47 @@ body {
     
 }
 
-.head {
+/* Navegacion de arriba de todo */
+
+header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: 63px;
+    justify-content: flex-end;
+    height: 100px;
+    padding: 0 50px;
     background: #171717;
-    position: fixed;
-    width: 100%;
-    z-index: 100;
 }
 
-.navbar {
+.mostrar-menu,
+.esconder-menu{
+    color: #fff;
+    font-size: 50px;
+    cursor: pointer;
+    display: none;
+    transition: 0.4s;
+}
+
+.mostrar-menu{
+    order: 1;
+}
+
+.navbar a:hover,
+.mostrar-menu:hover,
+.esconder-menu:hover{
+
+    background: #e91e63;
+}
+#check{
+    display: none;
+}
+
+.menu {
     display: flex;
     margin-right: 10px;
 }
 
-.logo {
-    margin-left: 30px;
-}
 
-.logo a {
-    text-decoration: none;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 20px;
-} 
-
-.navbar a {
+.menu a {
     display: block;
     padding: 20px 20px;
     color: #fff;
@@ -47,51 +59,93 @@ body {
     font-size: 20px;
 }
 
-.navbar a:hover {
+.menu a:hover {
     background: #e91e63;
 }
+
+/* RESPONSIVE */
+
+@media(max-width: 768px){
+    .mostrar-menu,
+    .esconder-menu{
+        display: block;
+    }
+    .menu{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #303030;
+        right: -100%;
+        top: 0;
+        text-align: center;
+        padding: 100px 0px;
+        z-index: 100;
+        transition: 0.8s;
+    }
+    .menu a{
+        display: block;
+        padding: 20px;
+    }
+    .esconder-menu{
+        position: absolute;
+        top: 40px;
+        right: 40px;
+    }
+    #check:checked ~ .navbar{
+        right: 0;
+    }
+}
+
+/* nombre e imagen y boton de reservar */
 
 .header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 60vh;
     background: url(imagenes/barber.jpg) no-repeat center;
     background-size: cover;
 }
 
 .title {
     margin-bottom: 40px;
-    font-size: 60px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #fff;
-}
-
-#title{
-    margin-bottom: 40px;
+    margin-top:10px;
     font-size: 60px;
     text-transform: uppercase;
-    color: #171717;
-    background-color: antiquewhite;
-    border-radius: 30px;
-    width: 40%;
-    text-shadow: 8px 5px 5px rgba(139, 111, 111, 0.7);
-}
-
-
-p {
-    margin-bottom: 40px;
-    font-size: 18px;
     color: #fff;
-    padding: 0 150px;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+
 }
+
+/* TITULO DE HORARIOS */
+
+#tiempo{
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10%;
+    padding-bottom: 20px;
+    color: #fff;
+    font-size: 300%;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+
+}
+
+.horarios{
+    color: #fff;
+    text-align: left;
+    font-size: 200%;
+}
+
+/* BOTONES */
 
 .btn {
     display: inline-block;
     margin-top: 15px;
     padding: 10px 40px;
     border: 2px solid #e91e63;
+    border-radius: 30px;
     color: #fff;
     text-decoration: none;
     background: #e91e63;
@@ -101,81 +155,37 @@ p {
     background: none;
 }
 
+/* ABARCA CASI TODO */
+
 .content {
-    height: 300px;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+/* FONDO DE HORARIOS */
+
 .sau {
-    padding: 50px 0;
+    height: 60vh;
+    padding: 10vh;
     background: #303030;
 }
 
-#tiempo{
-    margin-bottom: 10px;
-    margin-top: 20px;
-    color: #fff;
-    font-size: 300%;
-    text-transform: uppercase;
-}
-
-.horarios{
-    color: #fff;
-    text-align: left;
-    font-size: 100%;
-}
-
-.box-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    text-align: centers;
-}
-
-.box-container .box {
-    height: 170px;
-    width: 270px;
-    background: #171717;
-    text-align: center;
-    border-radius: 20px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
-    margin: 20px;
-}
-
-.box-container .box i {
-    height: 50px;
-    width: 50px;
-    line-height: 50px;
-    text-align: center;
-    border-radius: 50%;
-    color: #fff;
-    background: #e91e63;
-    font-size: 25px;
-    margin: 10px 0;
-}
-
-.box-container .box h3 {
-    font-size: 20px;
-    color: #e91e63;
-}
-
-.box-container .box p {
-    padding: 0 15px;
-    font-size: 16px;
-}
+/* FONDO DE BOTON DE MAPA */
 
 .price {
-    background: url(imagenes/barbershop2.jpg) no-repeat center;
+    background: url(imagenes/barbershop.jpg) no-repeat center;
     background-size: cover;
     background-attachment: fixed;
     text-align: center;
 }
 
+/* COMENTARIOS */
+
 .about {
-    background: #000000;
+    background: #303030;
     padding: 50px 0;
 }
 
@@ -190,8 +200,8 @@ p {
     width: 250px;
     padding-bottom: 20px;
     text-align: center;
-    box-shadow: 0 5px 5px rgba(253, 251, 251, 0.7);
-    background: #353434;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
+    background: #171717;
     margin: 20px 20px;
 }
 
@@ -222,28 +232,27 @@ p {
     color: #e91e63;
 }
 
-.contact {
-    padding: 250px 0;
-    background: #303030;
-}
+/* TEXTO DE COMENTARIOS */
 
-
-.footer-section{
-    display: flex;
-
-}
-
-.f-enlaces {
-    display: flex;
-    flex-direction: column;
-    margin: 0 100px;
-}
-
-.f-enlaces a {
+p {
+    margin-bottom: 40px;
+    font-size: 18px;
     color: #fff;
-    text-decoration: none;
-    margin-top: 20px;
+    padding: 0 150px;
 }
+
+
+/* TRABAJOS fondo */
+
+.contact {
+    display: flex;
+    height: 100%;
+    padding: 50px 0;
+    background: #171717;
+}
+
+/* NAVBAR */
+
 
 @media (max-width: 768px) {
     p {
@@ -274,37 +283,48 @@ p {
     }
 }
 
+/* UBICACION titulo */
+
 .como-llegar{
     color: white;
     font-size: 25px;
-    text-shadow: 0 5px 5px rgba(21, 20, 20, 0.7);
+    margin-top: 55px;
+    margin-bottom: 70px;
+    padding: 30px;
+    border-radius: 10px;
+    text-shadow: 4px 6px 4px black, 0 0 25px rgb(23, 24, 22), 0 0 5px rgb(13, 14, 13);
+
 }
 
+/* COMO LLEGAR? titulo */
+
+.como{
+    background-color: rgb(27, 94, 218);
+    height: 30%;
+    border-radius: 30px;
+    text-shadow: 2px 4px 2px black, 0 0 25px blue, 0 0 5px rgb(19, 18, 18);
+
+}
+
+/* BOTON DE UBICACION */
 
 #ubi{
-    color: black;
+    color: rgb(255, 255, 255);
     font-size: 40px;
-    margin:10px;
-    background-color: blanchedalmond;
-    border-radius: 20px;
-    width: 100%;
-    height: 100%;
 }
+
+/* IMAGENES */
 
 .trabajos{
-    margin: 10px;
+    display: inline-flex;
+    justify-content: center;
+    width: 420px;
+    height: 330px;
+    margin: 5px;
 }
 
-.ts{
-    width: 320px;
-    height: 300px;
-    display: inline-block;
-}
-
-.titulo2{
-    color: #fff;
-    font-size: 60px;
-    font-family: sans-serif;
-    margin-bottom: 80px;
-    margin-top: 10px;
+.mediana{
+    height: 290px;
+    width: 400px;
+    margin: 5px;
 }

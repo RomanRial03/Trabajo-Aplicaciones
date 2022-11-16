@@ -7,30 +7,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     
+    
 
-    <title>Document</title>
+    <title>Barbershop Barber Razor</title>
 </head>
 <body>
 
-   <div class="head">
-        
-        <div class="logo">
-            <!-- <img src="imagenes/logo.jpg" alt=""> -->
-        </div>
-
-        <nav class="navbar">
+    <header>
+        <input type="checkbox" id="check">
+        <label for="check" class="mostrar-menu">
+            &#8801
+        </label>
+        <nav class="menu">
             <a href="#">Inicio</a>
             <a href="#">Contacto</a>
             <a href="#">Trabajos</a>
             <a href="#">Precios</a>
+            <label for="check" class="esconder-menu">
+                &#215
+            </label>
         </nav>
-
-   </div>
-
+    </header>
 
    <header class="content header">
-       <h2 id="title">Barber Razor</h2>
-       <a href="login.html" class="btn">Reservar Ahora</a>
+       <h2 class="title">Barber Razor</h2>
+       <a href="reservas.html" class="btn">Reservar Ahora</a>
    </header>
 
 
@@ -40,12 +41,12 @@
        <div class="horarios">
         <ul>
             <li>Lunes 14:00 a 20:45hs</li>
-            <li>Martes</li>
-            <li>Miércoles</li>
-            <li>Jueves</li>
-            <li>Viernes</li>
-            <li>Sábados</li>
-            <li>Domingos</li>
+            <li>Martes 18:30 a 20:45hs</li>
+            <li>Miércoles 18:30 a 20:45hs</li>
+            <li>Jueves 18:30 a 20:45hs</li>
+            <li>Viernes 17:30 a 20:45hs</li>
+            <li>Sábados 09:00 a 20:45hs</li>
+            <li>Domingos Cerrado</li>
         </ul>
        </div>
 
@@ -59,8 +60,10 @@
 
             <h2 id="ubi">UBICACIÓN</h2>
             <h1>Barrio La Florida</h1>
+            <br>
             <h2>Calle; Grinspan 169</h2>
             <br>
+            <h1 class="como">¿Como llegar?</h1>
             <a href="https://www.google.com.ar/maps/place/Dr.+Grispan+169,+San+Nicol%C3%A1s+de+Los+Arroyos,+Provincia+de+Buenos+Aires/@-33.3603953,-60.2556279,17z/data=!3m1!4b1!4m5!3m4!1s0x95b76701656d8efb:0x1a5ab900fc52d797!8m2!3d-33.3603998!4d-60.2534392" class="btn">Mapa</a>
         </div>
 
@@ -68,68 +71,68 @@
 
    </section>
 
-   <section class="content about">
-        <h2 class="title">Comentarios</h2>
-    
-        <div class="box-container2">
-
-            <div class="box">
-                <img src="img/pic1.jpg" alt="">
-                <h3>Francisco</h3>
-                <p>El Mejor Servicio</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-
-            </div>
-
-            <div class="box">
-                <img src="img/pic1.jpg" alt="">
-                <h3>Ricardo</h3>
-                <p>Me Encantó</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-
-            </div>
-
-            <div class="box">
-                <img src="img/pic1.jpg" alt="">
-                <h3>Federico</h3>
-                <p>Excelente Servicio</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-
-            </div>
-
-        </div>
-        
-   </section>
-
    <section class="content contact">
-        <h2 class="titulo2">Trabajos</h2>
+        <h2 class="title">Trabajos</h2>
 
         <div class="trabajos">
 
-            <img class="ts" src="imagenes/corte1.jpg" alt="">
-            <img class="ts" src="imagenes/corte2.jpg" alt="">
-            <img class="ts" src="imagenes/corte3.jpg" alt="">
-            <img class="ts" src="imagenes/corte4.jpg" alt="">
-            <img class="ts" src="imagenes/corte5.jpg" alt="">
+            <img class="mediana" src="imagenes/corte1.jpg" alt="">
+            <img class="mediana" src="imagenes/corte2.jpg" alt="">
+            <img class="trabajos" src="imagenes/corte3.jpg" alt="">
+            <img class="trabajos" src="imagenes/corte4.jpg" alt="">
+            <img class="trabajos" src="imagenes/corte5.jpg" alt="">
 
         </div>
 
    </section>
+
+   <section class="content about">
+    <h2 class="title">Comentarios</h2>
+
+    <div class="box-container2">
+
+        <div class="box">
+            <img src="img/pic1.jpg" alt="">
+            <h3>Francisco</h3>
+            <p>El Mejor Servicio</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+
+        </div>
+
+        <div class="box">
+            <img src="img/pic1.jpg" alt="">
+            <h3>Ricardo</h3>
+            <p>Me Encantó</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+
+        </div>
+
+        <div class="box">
+            <img src="img/pic1.jpg" alt="">
+            <h3>Federico</h3>
+            <p>Excelente Servicio</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+
+        </div>
+
+    </div>
+    
+</section>
     
 </body>
 </html>
